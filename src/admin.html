@@ -6,22 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>管理页面</title>
+    <link rel="stylesheet" href="./css/default.css">
 
-    <style>
-        #yyy {
-            padding: 50px 80px;
-            border-radius: 20px;
-            border: 2px dashed #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 200px;
-            flex-direction: column;
-        }
-    </style>
+
 </head>
 
 <body>
+    <div class="page">
+        <aside class='siderbar'>
+            <div class='newSong'>
+                新建歌曲
+            </div>
+            <ul class='songList'>
+                <li>歌曲1</li>
+                <li class='active'>歌曲1</li>
+                <li>歌曲1</li>
+                <li>歌曲1</li>
+                <li>歌曲1</li>
+                <li>歌曲1</li>
+                <li>歌曲1</li>
+                <li>歌曲1</li>
+                <li>歌曲1</li>
+                <li>歌曲1</li>
+
+
+            </ul>
+            <div class='uploadArea'>
+                <div id='yyy' class='draggable'>
+                    <div id="xxx" class='clickable'>
+                        <span>点击或者拖拽文件</span>
+                        <p>文件大小不能超过10M</p>
+                    </div>
+                    <!-- <button id='xxx'>点击或者拖拽文件</button> -->
+
+                </div>
+            </div>
+        </aside>
+        <main>
+            <form class='form'>
+                <div class='row'>
+                    <label>
+                    歌名
+                     <input type="text">
+                     </label>
+
+                </div>
+                <div class="row">
+                    <label>
+                        歌手
+                        <input type="text">
+                    </label>
+                </div>
+                <div class="row">
+                    <label>
+                        歌曲链接
+                        <input type="text">
+                    </label>
+                </div>
+                <div class="row">
+                    <button type="submit">保存</button>
+                </div>
+            </form>
+        </main>
+
+    </div>
 
 
 
@@ -97,7 +145,7 @@
             // uptoken : '', //若未指定uptoken_url,则必须指定 uptoken ,uptoken由其他程序生成
             // unique_names: true, // 默认 false，key为文件名。若开启该选项，SDK为自动生成上传成功后的key（文件名）。
             // save_key: true,   // 默认 false。若在服务端生成uptoken的上传策略中指定了 `sava_key`，则开启，SDK会忽略对key的处理
-            domain: 'http://qiniu-plupload.qiniudn.com/', //bucket 域名，下载资源时用到，**必需**
+            domain: 'pft1afpw6.bkt.clouddn.com/', //bucket 域名，下载资源时用到，**必需**
 
             // pft1afpw6.bkt.clouddn.com
             get_new_uptoken: false, //设置上传文件的时候是否每次都重新获取新的token
@@ -125,17 +173,27 @@
                 'FileUploaded': function(up, file, info) {
 
                     uploadStatus.textContent = '上传完毕'
-                        // 每个文件上传成功后,处理相关的事情
-                        // 其中 info.response 是文件上传成功后，服务端返回的json，形式如
-                        // {
-                        //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
-                        //    "key": "gogopher.jpg"
-                        //  }
-                        // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
 
-                    // var domain = up.getOption('domain');
-                    // var res = parseJSON(info.response);
-                    // var sourceLink = domain + res.key; 获取上传成功后的文件的Url
+                    // 每个文件上传成功后,处理相关的事情
+                    // 其中 info.response 是文件上传成功后，服务端返回的json，形式如
+                    // {
+                    //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
+                    //    "key": "gogopher.jpg"
+                    //  }
+                    // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
+
+                    var domain = up.getOption('domain');
+                    var response = JSON.parse(info.response);
+                    // var sourceLink = 'http://' + domain + response.key;
+                    // sourceLink = encodeURI(sourceLink)
+
+                    var sourceLink = 'http://' + domain + encodeURIComponent(response.key)
+
+                    console.log(sourceLink)
+                    uploadStatus.textContent = sourceLink + response.key
+
+
+                    // 获取上传成功后的文件的Url
                 },
                 'Error': function(up, err, errTip) {
                     //上传出错时,处理相关的事情
