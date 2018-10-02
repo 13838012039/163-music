@@ -3,6 +3,16 @@ li {
     list-style: none;
 }
 
+input {
+    font-size: inherit;
+    font-family: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -35,12 +45,11 @@ body {
 
 .page>aside {
     width: 200px;
-    border: 1px solid red;
 }
 
-.page>mian {
+.page>main {
     flex-grow: 1;
-    border: 1px solid green;
+    padding-left: 20px;
 }
 
 .draggable {
@@ -79,8 +88,11 @@ body {
     background: #d4d4d4;
 }
 
-.songList {
+#songList-container {
     flex-grow: 1;
+}
+
+.songList {
     text-align: left;
     border-top: 1px solid #333
 }
@@ -93,3 +105,55 @@ body {
 .songList>li.active {
     background: #d4d4d4;
 }
+
+
+/* main */
+
+main {
+    background: #d4d4d4;
+}
+
+.form {
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.form>.row {
+    margin: 10px 0;
+    display: flex;
+}
+
+.form>.row.active {
+    margin-left: 4em;
+}
+
+.form>.row>label {
+    width: 4em;
+    text-align: left;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+}
+
+.form input[type=text] {
+    padding: 3px 8px;
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+    height: 30px;
+}
+
+.form input[type=button],
+.form input[type=submit],
+.form button {
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+.page>main {
+    padding-top: 20px;
+}
+
+.page>main>.form {}
