@@ -13,7 +13,7 @@
 
 
             let { songs } = data
-            let liList = songs.map((song) => $('<li></li>').text(song.name))
+            let liList = songs.map((song) => $('<li></li>').text(song.name).attr('data-song-id', song.id))
 
             // console.log(liList)
 
@@ -70,6 +70,22 @@
         bindEvents() {
             $(this.view.el).on('click', 'li', (e) => {
                 this.view.activeItem(e.currentTarget)
+                let songId = e.currentTarget.getAttribute('data-song-id')
+                let name = e.currentTarget.textContent
+                let data
+                let songs = this.model.data.songs
+                for (let i = 0; i < songs.length; i++) {
+                    if (songs[i].id === songId) {
+                        data = songs[i]
+                        break
+                    }
+                }
+                console.log('for后的data')
+                console.log(data)
+                    //深拷贝
+                let string = JSON.stringify(data)
+                let object = JSON.parse(string)
+                window.eventHub.emit('select', object)
             })
 
         },

@@ -104,6 +104,11 @@
                 this.view.render(this.model.data)
                     // this.reset(data)
             })
+            window.eventHub.on('select', (data) => {
+                console.log(data)
+                this.model.data = data
+                this.view.render(this.model.data)
+            })
 
         },
         reset(data) {
@@ -125,7 +130,9 @@
                         let object = JSON.parse(string)
                         window.eventHub.emit('create', object)
                             // console.log(this.model.data)
+
                     })
+
             })
         }
     }
