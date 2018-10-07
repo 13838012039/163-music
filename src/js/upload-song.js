@@ -73,7 +73,7 @@
                         //     key: response.key
 
                         // })
-                        window.eventHub.emit('upload', {
+                        window.eventHub.emit('new', {
                             url: sourceLink,
                             name: response.key
                         })
