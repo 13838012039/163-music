@@ -180,6 +180,8 @@ main {
     /* background: rebeccapurple; */
     background: rgba(0, 0, 0, 0.6);
     z-index: 1;
+    pointer-events: none;
+    /* 用户可以穿透div */
 }
 
 .site-loading.active {

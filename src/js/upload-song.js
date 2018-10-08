@@ -8,7 +8,11 @@
         }
 
     }
-    let model = {}
+    let model = {
+        data: {
+            status: 'open'
+        }
+    }
     let controller = {
         init(view, model) {
             this.view = view
@@ -42,16 +46,24 @@
                             // 文件添加进队列后,处理相关的事情
                         });
                     },
-                    'BeforeUpload': function(up, file) {
+                    'BeforeUpload': (up, file) => {
                         window.eventHub.emit('beforeUpload')
-                            // 每个文件上传前,处理相关的事情
+
+                        if (this.model.data.status === 'closed') {
+                            return false
+                        } else {
+                            this.model.data.status = 'closed'
+                            return true
+                        }
+                        // 每个文件上传前,处理相关的事情
                     },
                     'UploadProgress': function(up, file) {
                         uploadStatus.textContent = '上传中'
                             // 每个文件上传时,处理相关的事情
                     },
-                    'FileUploaded': function(up, file, info) {
+                    'FileUploaded': (up, file, info) => {
                         window.eventHub.emit('afterUpload')
+                        this.model.data.status = 'open'
                         uploadStatus.textContent = '上传完毕'
 
                         // 每个文件上传成功后,处理相关的事情
