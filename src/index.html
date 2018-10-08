@@ -34,7 +34,7 @@
             </section>
         </div>
         <ol class="tab-content noCollapse">
-            <li class="page-1 active">
+            <li class="page-1 active" data-tab-name="page-1">
                 <section class="playlists">
                     <h2 class="sectionTitle">推荐歌单</h2>
                     <ol class="songs">
@@ -96,13 +96,26 @@
                     </div>
                 </section>
             </li>
-            <li class="page-2">page 2</li>
-            <li class="page-3">
+            <li class="page-2" data-tab-name="page-2">page 2</li>
+            <li class="page-3" data-tab-name="page-3">
                 <input id="search" type="text" style="background:#EBECEC;">
                 <ol id="searchResult"></ol>
             </li>
         </ol>
     </div>
 </body>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+<script src="./js/initializers/av.js"></script>
+<script src="./js/admin/eventHub.js"></script>
+
+<script src="./js/index/tabs.js"></script>
+
+<script src="./js/index/page-1.js"></script>
+<script src="./js/index/page-2.js"></script>
+<script src="./js/index/page-3.js"></script>
 
 </html>
