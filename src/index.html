@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>我的云音乐</title>
     <link rel="stylesheet" href="./css/index.css">
 </head>
@@ -34,7 +32,7 @@
             </section>
         </div>
         <ol class="tab-content noCollapse">
-            <li class="page-1 active" data-tab-name="page-1">
+            <li class="page-1 active">
                 <section class="playlists">
                     <h2 class="sectionTitle">推荐歌单</h2>
                     <ol class="songs">
@@ -79,9 +77,11 @@
                 <section class="songs">
                     <h2 class="sectionTitle">最新音乐</h2>
                     <ol id="songs" class="list">
-                        <div id="songs-loading" class="square-spin" style="margin: 0 auto; width: 50px;">
+                        <!-- <div id="songs-loading" class="square-spin" style="margin: 0 auto; width: 50px;">
                             <div></div>
-                        </div>
+                        </div> -->
+
+
                     </ol>
                 </section>
                 <section class="art">
@@ -96,26 +96,22 @@
                     </div>
                 </section>
             </li>
-            <li class="page-2" data-tab-name="page-2">page 2</li>
-            <li class="page-3" data-tab-name="page-3">
+            <li class="page-2">page 2</li>
+            <li class="page-3">
                 <input id="search" type="text" style="background:#EBECEC;">
                 <ol id="searchResult"></ol>
             </li>
         </ol>
     </div>
+    <script src="//at.alicdn.com/t/font_395875_4hwrep7mypx8ncdi.js"></script>
+    <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+    <script src="./js/initializers/av.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./js/admin/eventHub.js"></script>
+    <script src="./js/index/tabs.js"></script>
+    <script src="./js/index/page-1.js"></script>
+    <script src="./js/index/page-2.js"></script>
+    <script src="./js/index/page-3.js"></script>
 </body>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
-<script src="./js/initializers/av.js"></script>
-<script src="./js/admin/eventHub.js"></script>
-
-<script src="./js/index/tabs.js"></script>
-
-<script src="./js/index/page-1.js"></script>
-<script src="./js/index/page-2.js"></script>
-<script src="./js/index/page-3.js"></script>
 
 </html>

@@ -11,7 +11,6 @@
             let $el = $(this.el)
             $el.html(this.template)
 
-
             let { songs, selectSongId } = data
             let liList = songs.map((song) => {
                 let $li = $('<li></li>').text(song.name).attr('data-song-id', song.id)
@@ -21,14 +20,14 @@
                 return $li
             })
 
-            // console.log(liList)
 
             $el.find('ul').empty()
-            console.log($el.find('ul'))
+
             liList.map((domLi) => {
                 $el.find('ul').append(domLi)
-                    // console.log($el.find('ul'))
+
             })
+
 
 
         },
@@ -92,9 +91,8 @@
                         break
                     }
                 }
-                console.log('for后的data')
-                console.log(data)
-                    //深拷贝
+
+                //深拷贝
                 let string = JSON.stringify(data)
                 let object = JSON.parse(string)
                 window.eventHub.emit('select', object)
@@ -121,6 +119,7 @@
                 }
                 this.view.render(this.model.data)
             })
+
 
         }
 
